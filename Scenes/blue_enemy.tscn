@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://br2i6gmy8r8q5"]
+
+[ext_resource type="Texture2D" uid="uid://rby4ycvg8455" path="res://Assets/sprites/Enemy (red+blue)/Fire_Totem_blue-Sheet.png" id="1_1oe5d"]
+[ext_resource type="PackedScene" uid="uid://cwaguhtrppn6o" path="res://Scenes/killzone.tscn" id="2_iplp6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qam3c"]
+atlas = ExtResource("1_1oe5d")
+region = Rect2(0, 408, 64, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1lh4"]
+atlas = ExtResource("1_1oe5d")
+region = Rect2(64, 408, 64, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u3vf"]
+atlas = ExtResource("1_1oe5d")
+region = Rect2(128, 408, 64, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we2bi"]
+atlas = ExtResource("1_1oe5d")
+region = Rect2(192, 408, 64, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_repxv"]
+atlas = ExtResource("1_1oe5d")
+region = Rect2(256, 408, 64, 68)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o4srs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qam3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1lh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u3vf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we2bi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_repxv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7sm7"]
+size = Vector2(21.4717, 35.84)
+
+[node name="Blue Enemy" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.25, -7.5)
+scale = Vector2(0.414063, 0.367647)
+sprite_frames = SubResource("SpriteFrames_o4srs")
+autoplay = "default"
+frame_progress = 0.418339
+
+[node name="Killzone" parent="AnimatedSprite2D" instance=ExtResource("2_iplp6")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Killzone"]
+position = Vector2(0.735848, 7.92)
+shape = SubResource("RectangleShape2D_w7sm7")
